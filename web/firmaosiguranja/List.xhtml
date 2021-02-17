@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListFirmaosiguranjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListFirmaosiguranjaEmpty}" rendered="#{firmaosiguranjaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{firmaosiguranjaController.items.rowCount > 0}">
+                    <h:outputText value="#{firmaosiguranjaController.pagination.pageFirstItem + 1}..#{firmaosiguranjaController.pagination.pageLastItem + 1}/#{firmaosiguranjaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{firmaosiguranjaController.previous}" value="#{bundle.Previous} #{firmaosiguranjaController.pagination.pageSize}" rendered="#{firmaosiguranjaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{firmaosiguranjaController.next}" value="#{bundle.Next} #{firmaosiguranjaController.pagination.pageSize}" rendered="#{firmaosiguranjaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{firmaosiguranjaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFirmaosiguranjaTitle_idFirme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFirme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFirmaosiguranjaTitle_naziv}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.naziv}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFirmaosiguranjaTitle_adresaFirme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.adresaFirme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFirmaosiguranjaTitle_telefonFirme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefonFirme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListFirmaosiguranjaTitle_faksFirme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.faksFirme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{firmaosiguranjaController.prepareView}" value="#{bundle.ListFirmaosiguranjaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{firmaosiguranjaController.prepareEdit}" value="#{bundle.ListFirmaosiguranjaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{firmaosiguranjaController.destroy}" value="#{bundle.ListFirmaosiguranjaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{firmaosiguranjaController.prepareCreate}" value="#{bundle.ListFirmaosiguranjaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListFirmaosiguranjaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

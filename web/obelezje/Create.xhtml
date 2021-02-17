@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateObelezjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateObelezjeLabel_idObelezja}" for="idObelezja" />
+                    <h:inputText id="idObelezja" value="#{obelezjeController.selected.idObelezja}" title="#{bundle.CreateObelezjeTitle_idObelezja}" required="true" requiredMessage="#{bundle.CreateObelezjeRequiredMessage_idObelezja}"/>
+                    <h:outputLabel value="#{bundle.CreateObelezjeLabel_idVozila}" for="idVozila" />
+                    <h:selectOneMenu id="idVozila" value="#{obelezjeController.selected.idVozila}" title="#{bundle.CreateObelezjeTitle_idVozila}" required="true" requiredMessage="#{bundle.CreateObelezjeRequiredMessage_idVozila}">
+                        <f:selectItems value="#{voziloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateObelezjeLabel_idModela}" for="idModela" />
+                    <h:selectOneMenu id="idModela" value="#{obelezjeController.selected.idModela}" title="#{bundle.CreateObelezjeTitle_idModela}" required="true" requiredMessage="#{bundle.CreateObelezjeRequiredMessage_idModela}">
+                        <f:selectItems value="#{modelautomobilaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{obelezjeController.create}" value="#{bundle.CreateObelezjeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{obelezjeController.prepareList}" value="#{bundle.CreateObelezjeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateObelezjeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

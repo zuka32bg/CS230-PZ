@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListOsiguranjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListOsiguranjeEmpty}" rendered="#{osiguranjeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{osiguranjeController.items.rowCount > 0}">
+                    <h:outputText value="#{osiguranjeController.pagination.pageFirstItem + 1}..#{osiguranjeController.pagination.pageLastItem + 1}/#{osiguranjeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{osiguranjeController.previous}" value="#{bundle.Previous} #{osiguranjeController.pagination.pageSize}" rendered="#{osiguranjeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{osiguranjeController.next}" value="#{bundle.Next} #{osiguranjeController.pagination.pageSize}" rendered="#{osiguranjeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{osiguranjeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsiguranjeTitle_idOsiguranja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idOsiguranja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsiguranjeTitle_tipOsiguranja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipOsiguranja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsiguranjeTitle_cenaOsiguranja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cenaOsiguranja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListOsiguranjeTitle_idFirme}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idFirme}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{osiguranjeController.prepareView}" value="#{bundle.ListOsiguranjeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{osiguranjeController.prepareEdit}" value="#{bundle.ListOsiguranjeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{osiguranjeController.destroy}" value="#{bundle.ListOsiguranjeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{osiguranjeController.prepareCreate}" value="#{bundle.ListOsiguranjeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListOsiguranjeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

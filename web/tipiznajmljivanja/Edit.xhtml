@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTipiznajmljivanjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTipiznajmljivanjaLabel_idTipaizn}" for="idTipaizn" />
+                    <h:inputText id="idTipaizn" value="#{tipiznajmljivanjaController.selected.idTipaizn}" title="#{bundle.EditTipiznajmljivanjaTitle_idTipaizn}" required="true" requiredMessage="#{bundle.EditTipiznajmljivanjaRequiredMessage_idTipaizn}"/>
+                    <h:outputLabel value="#{bundle.EditTipiznajmljivanjaLabel_tipIznajmljivanja}" for="tipIznajmljivanja" />
+                    <h:inputTextarea rows="4" cols="30" id="tipIznajmljivanja" value="#{tipiznajmljivanjaController.selected.tipIznajmljivanja}" title="#{bundle.EditTipiznajmljivanjaTitle_tipIznajmljivanja}" required="true" requiredMessage="#{bundle.EditTipiznajmljivanjaRequiredMessage_tipIznajmljivanja}"/>
+                    <h:outputLabel value="#{bundle.EditTipiznajmljivanjaLabel_cenaIznajmljivanja}" for="cenaIznajmljivanja" />
+                    <h:inputText id="cenaIznajmljivanja" value="#{tipiznajmljivanjaController.selected.cenaIznajmljivanja}" title="#{bundle.EditTipiznajmljivanjaTitle_cenaIznajmljivanja}" required="true" requiredMessage="#{bundle.EditTipiznajmljivanjaRequiredMessage_cenaIznajmljivanja}"/>
+                    <h:outputLabel value="#{bundle.EditTipiznajmljivanjaLabel_maxKilometraza}" for="maxKilometraza" />
+                    <h:inputText id="maxKilometraza" value="#{tipiznajmljivanjaController.selected.maxKilometraza}" title="#{bundle.EditTipiznajmljivanjaTitle_maxKilometraza}" required="true" requiredMessage="#{bundle.EditTipiznajmljivanjaRequiredMessage_maxKilometraza}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{tipiznajmljivanjaController.update}" value="#{bundle.EditTipiznajmljivanjaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTipiznajmljivanjaViewLink}"/>
+                <br />
+                <h:commandLink action="#{tipiznajmljivanjaController.prepareList}" value="#{bundle.EditTipiznajmljivanjaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTipiznajmljivanjaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

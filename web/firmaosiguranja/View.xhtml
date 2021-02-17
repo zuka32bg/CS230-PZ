@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFirmaosiguranjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFirmaosiguranjaLabel_idFirme}"/>
+                    <h:outputText value="#{firmaosiguranjaController.selected.idFirme}" title="#{bundle.ViewFirmaosiguranjaTitle_idFirme}"/>
+                    <h:outputText value="#{bundle.ViewFirmaosiguranjaLabel_naziv}"/>
+                    <h:outputText value="#{firmaosiguranjaController.selected.naziv}" title="#{bundle.ViewFirmaosiguranjaTitle_naziv}"/>
+                    <h:outputText value="#{bundle.ViewFirmaosiguranjaLabel_adresaFirme}"/>
+                    <h:outputText value="#{firmaosiguranjaController.selected.adresaFirme}" title="#{bundle.ViewFirmaosiguranjaTitle_adresaFirme}"/>
+                    <h:outputText value="#{bundle.ViewFirmaosiguranjaLabel_telefonFirme}"/>
+                    <h:outputText value="#{firmaosiguranjaController.selected.telefonFirme}" title="#{bundle.ViewFirmaosiguranjaTitle_telefonFirme}"/>
+                    <h:outputText value="#{bundle.ViewFirmaosiguranjaLabel_faksFirme}"/>
+                    <h:outputText value="#{firmaosiguranjaController.selected.faksFirme}" title="#{bundle.ViewFirmaosiguranjaTitle_faksFirme}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{firmaosiguranjaController.destroyAndView}" value="#{bundle.ViewFirmaosiguranjaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFirmaosiguranjaEditLink}"/>
+                <br />
+                <h:commandLink action="#{firmaosiguranjaController.prepareCreate}" value="#{bundle.ViewFirmaosiguranjaCreateLink}" />
+                <br />
+                <h:commandLink action="#{firmaosiguranjaController.prepareList}" value="#{bundle.ViewFirmaosiguranjaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFirmaosiguranjaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

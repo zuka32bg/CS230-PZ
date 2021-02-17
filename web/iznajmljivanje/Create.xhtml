@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateIznajmljivanjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateIznajmljivanjeLabel_idIznajmljivanja}" for="idIznajmljivanja" />
+                    <h:inputText id="idIznajmljivanja" value="#{iznajmljivanjeController.selected.idIznajmljivanja}" title="#{bundle.CreateIznajmljivanjeTitle_idIznajmljivanja}" required="true" requiredMessage="#{bundle.CreateIznajmljivanjeRequiredMessage_idIznajmljivanja}"/>
+                    <h:outputLabel value="#{bundle.CreateIznajmljivanjeLabel_ukupnaCena}" for="ukupnaCena" />
+                    <h:inputText id="ukupnaCena" value="#{iznajmljivanjeController.selected.ukupnaCena}" title="#{bundle.CreateIznajmljivanjeTitle_ukupnaCena}" required="true" requiredMessage="#{bundle.CreateIznajmljivanjeRequiredMessage_ukupnaCena}"/>
+                    <h:outputLabel value="#{bundle.CreateIznajmljivanjeLabel_idOsiguranja}" for="idOsiguranja" />
+                    <h:selectOneMenu id="idOsiguranja" value="#{iznajmljivanjeController.selected.idOsiguranja}" title="#{bundle.CreateIznajmljivanjeTitle_idOsiguranja}" required="true" requiredMessage="#{bundle.CreateIznajmljivanjeRequiredMessage_idOsiguranja}">
+                        <f:selectItems value="#{osiguranjeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateIznajmljivanjeLabel_idTipaizn}" for="idTipaizn" />
+                    <h:selectOneMenu id="idTipaizn" value="#{iznajmljivanjeController.selected.idTipaizn}" title="#{bundle.CreateIznajmljivanjeTitle_idTipaizn}" required="true" requiredMessage="#{bundle.CreateIznajmljivanjeRequiredMessage_idTipaizn}">
+                        <f:selectItems value="#{tipiznajmljivanjaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{iznajmljivanjeController.create}" value="#{bundle.CreateIznajmljivanjeSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{iznajmljivanjeController.prepareList}" value="#{bundle.CreateIznajmljivanjeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateIznajmljivanjeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

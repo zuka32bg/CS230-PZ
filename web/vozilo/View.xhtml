@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewVoziloTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewVoziloLabel_idVozila}"/>
+                    <h:outputText value="#{voziloController.selected.idVozila}" title="#{bundle.ViewVoziloTitle_idVozila}"/>
+                    <h:outputText value="#{bundle.ViewVoziloLabel_datumVracanja}"/>
+                    <h:outputText value="#{voziloController.selected.datumVracanja}" title="#{bundle.ViewVoziloTitle_datumVracanja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewVoziloLabel_kupovnaCena}"/>
+                    <h:outputText value="#{voziloController.selected.kupovnaCena}" title="#{bundle.ViewVoziloTitle_kupovnaCena}"/>
+                    <h:outputText value="#{bundle.ViewVoziloLabel_kilometraza}"/>
+                    <h:outputText value="#{voziloController.selected.kilometraza}" title="#{bundle.ViewVoziloTitle_kilometraza}"/>
+                    <h:outputText value="#{bundle.ViewVoziloLabel_popravka}"/>
+                    <h:outputText value="#{voziloController.selected.popravka}" title="#{bundle.ViewVoziloTitle_popravka}"/>
+                    <h:outputText value="#{bundle.ViewVoziloLabel_datumPopravke}"/>
+                    <h:outputText value="#{voziloController.selected.datumPopravke}" title="#{bundle.ViewVoziloTitle_datumPopravke}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{voziloController.destroyAndView}" value="#{bundle.ViewVoziloDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewVoziloEditLink}"/>
+                <br />
+                <h:commandLink action="#{voziloController.prepareCreate}" value="#{bundle.ViewVoziloCreateLink}" />
+                <br />
+                <h:commandLink action="#{voziloController.prepareList}" value="#{bundle.ViewVoziloShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewVoziloIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

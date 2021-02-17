@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewIznajmljivanjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewIznajmljivanjeLabel_idIznajmljivanja}"/>
+                    <h:outputText value="#{iznajmljivanjeController.selected.idIznajmljivanja}" title="#{bundle.ViewIznajmljivanjeTitle_idIznajmljivanja}"/>
+                    <h:outputText value="#{bundle.ViewIznajmljivanjeLabel_ukupnaCena}"/>
+                    <h:outputText value="#{iznajmljivanjeController.selected.ukupnaCena}" title="#{bundle.ViewIznajmljivanjeTitle_ukupnaCena}"/>
+                    <h:outputText value="#{bundle.ViewIznajmljivanjeLabel_idOsiguranja}"/>
+                    <h:outputText value="#{iznajmljivanjeController.selected.idOsiguranja}" title="#{bundle.ViewIznajmljivanjeTitle_idOsiguranja}"/>
+                    <h:outputText value="#{bundle.ViewIznajmljivanjeLabel_idTipaizn}"/>
+                    <h:outputText value="#{iznajmljivanjeController.selected.idTipaizn}" title="#{bundle.ViewIznajmljivanjeTitle_idTipaizn}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{iznajmljivanjeController.destroyAndView}" value="#{bundle.ViewIznajmljivanjeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewIznajmljivanjeEditLink}"/>
+                <br />
+                <h:commandLink action="#{iznajmljivanjeController.prepareCreate}" value="#{bundle.ViewIznajmljivanjeCreateLink}" />
+                <br />
+                <h:commandLink action="#{iznajmljivanjeController.prepareList}" value="#{bundle.ViewIznajmljivanjeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewIznajmljivanjeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

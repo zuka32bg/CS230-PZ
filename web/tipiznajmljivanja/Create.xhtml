@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipiznajmljivanjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipiznajmljivanjaLabel_idTipaizn}" for="idTipaizn" />
+                    <h:inputText id="idTipaizn" value="#{tipiznajmljivanjaController.selected.idTipaizn}" title="#{bundle.CreateTipiznajmljivanjaTitle_idTipaizn}" required="true" requiredMessage="#{bundle.CreateTipiznajmljivanjaRequiredMessage_idTipaizn}"/>
+                    <h:outputLabel value="#{bundle.CreateTipiznajmljivanjaLabel_tipIznajmljivanja}" for="tipIznajmljivanja" />
+                    <h:inputTextarea rows="4" cols="30" id="tipIznajmljivanja" value="#{tipiznajmljivanjaController.selected.tipIznajmljivanja}" title="#{bundle.CreateTipiznajmljivanjaTitle_tipIznajmljivanja}" required="true" requiredMessage="#{bundle.CreateTipiznajmljivanjaRequiredMessage_tipIznajmljivanja}"/>
+                    <h:outputLabel value="#{bundle.CreateTipiznajmljivanjaLabel_cenaIznajmljivanja}" for="cenaIznajmljivanja" />
+                    <h:inputText id="cenaIznajmljivanja" value="#{tipiznajmljivanjaController.selected.cenaIznajmljivanja}" title="#{bundle.CreateTipiznajmljivanjaTitle_cenaIznajmljivanja}" required="true" requiredMessage="#{bundle.CreateTipiznajmljivanjaRequiredMessage_cenaIznajmljivanja}"/>
+                    <h:outputLabel value="#{bundle.CreateTipiznajmljivanjaLabel_maxKilometraza}" for="maxKilometraza" />
+                    <h:inputText id="maxKilometraza" value="#{tipiznajmljivanjaController.selected.maxKilometraza}" title="#{bundle.CreateTipiznajmljivanjaTitle_maxKilometraza}" required="true" requiredMessage="#{bundle.CreateTipiznajmljivanjaRequiredMessage_maxKilometraza}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipiznajmljivanjaController.create}" value="#{bundle.CreateTipiznajmljivanjaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipiznajmljivanjaController.prepareList}" value="#{bundle.CreateTipiznajmljivanjaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipiznajmljivanjaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListObelezjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListObelezjeEmpty}" rendered="#{obelezjeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{obelezjeController.items.rowCount > 0}">
+                    <h:outputText value="#{obelezjeController.pagination.pageFirstItem + 1}..#{obelezjeController.pagination.pageLastItem + 1}/#{obelezjeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{obelezjeController.previous}" value="#{bundle.Previous} #{obelezjeController.pagination.pageSize}" rendered="#{obelezjeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{obelezjeController.next}" value="#{bundle.Next} #{obelezjeController.pagination.pageSize}" rendered="#{obelezjeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{obelezjeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObelezjeTitle_idObelezja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idObelezja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObelezjeTitle_idVozila}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idVozila}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListObelezjeTitle_idModela}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idModela}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{obelezjeController.prepareView}" value="#{bundle.ListObelezjeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{obelezjeController.prepareEdit}" value="#{bundle.ListObelezjeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{obelezjeController.destroy}" value="#{bundle.ListObelezjeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{obelezjeController.prepareCreate}" value="#{bundle.ListObelezjeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListObelezjeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

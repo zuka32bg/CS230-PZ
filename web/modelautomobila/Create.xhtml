@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateModelautomobilaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateModelautomobilaLabel_idModela}" for="idModela" />
+                    <h:inputText id="idModela" value="#{modelautomobilaController.selected.idModela}" title="#{bundle.CreateModelautomobilaTitle_idModela}" required="true" requiredMessage="#{bundle.CreateModelautomobilaRequiredMessage_idModela}"/>
+                    <h:outputLabel value="#{bundle.CreateModelautomobilaLabel_tipAuta}" for="tipAuta" />
+                    <h:inputTextarea rows="4" cols="30" id="tipAuta" value="#{modelautomobilaController.selected.tipAuta}" title="#{bundle.CreateModelautomobilaTitle_tipAuta}" required="true" requiredMessage="#{bundle.CreateModelautomobilaRequiredMessage_tipAuta}"/>
+                    <h:outputLabel value="#{bundle.CreateModelautomobilaLabel_snaga}" for="snaga" />
+                    <h:inputText id="snaga" value="#{modelautomobilaController.selected.snaga}" title="#{bundle.CreateModelautomobilaTitle_snaga}" required="true" requiredMessage="#{bundle.CreateModelautomobilaRequiredMessage_snaga}"/>
+                    <h:outputLabel value="#{bundle.CreateModelautomobilaLabel_idMarke}" for="idMarke" />
+                    <h:selectOneMenu id="idMarke" value="#{modelautomobilaController.selected.idMarke}" title="#{bundle.CreateModelautomobilaTitle_idMarke}" required="true" requiredMessage="#{bundle.CreateModelautomobilaRequiredMessage_idMarke}">
+                        <f:selectItems value="#{markaautomobilaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{modelautomobilaController.create}" value="#{bundle.CreateModelautomobilaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{modelautomobilaController.prepareList}" value="#{bundle.CreateModelautomobilaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateModelautomobilaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

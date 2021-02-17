@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRezervacijaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRezervacijaLabel_idRezervacije}" for="idRezervacije" />
+                    <h:inputText id="idRezervacije" value="#{rezervacijaController.selected.idRezervacije}" title="#{bundle.CreateRezervacijaTitle_idRezervacije}" required="true" requiredMessage="#{bundle.CreateRezervacijaRequiredMessage_idRezervacije}"/>
+                    <h:outputLabel value="#{bundle.CreateRezervacijaLabel_datumPocetka}" for="datumPocetka" />
+                    <h:inputText id="datumPocetka" value="#{rezervacijaController.selected.datumPocetka}" title="#{bundle.CreateRezervacijaTitle_datumPocetka}" required="true" requiredMessage="#{bundle.CreateRezervacijaRequiredMessage_datumPocetka}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateRezervacijaLabel_datunKraja}" for="datunKraja" />
+                    <h:inputText id="datunKraja" value="#{rezervacijaController.selected.datunKraja}" title="#{bundle.CreateRezervacijaTitle_datunKraja}" required="true" requiredMessage="#{bundle.CreateRezervacijaRequiredMessage_datunKraja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateRezervacijaLabel_idKlijenta}" for="idKlijenta" />
+                    <h:selectOneMenu id="idKlijenta" value="#{rezervacijaController.selected.idKlijenta}" title="#{bundle.CreateRezervacijaTitle_idKlijenta}" required="true" requiredMessage="#{bundle.CreateRezervacijaRequiredMessage_idKlijenta}">
+                        <f:selectItems value="#{klijentController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRezervacijaLabel_idVozila}" for="idVozila" />
+                    <h:selectOneMenu id="idVozila" value="#{rezervacijaController.selected.idVozila}" title="#{bundle.CreateRezervacijaTitle_idVozila}" required="true" requiredMessage="#{bundle.CreateRezervacijaRequiredMessage_idVozila}">
+                        <f:selectItems value="#{voziloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateRezervacijaLabel_idIznajmljivanja}" for="idIznajmljivanja" />
+                    <h:selectOneMenu id="idIznajmljivanja" value="#{rezervacijaController.selected.idIznajmljivanja}" title="#{bundle.CreateRezervacijaTitle_idIznajmljivanja}" required="true" requiredMessage="#{bundle.CreateRezervacijaRequiredMessage_idIznajmljivanja}">
+                        <f:selectItems value="#{iznajmljivanjeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rezervacijaController.create}" value="#{bundle.CreateRezervacijaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rezervacijaController.prepareList}" value="#{bundle.CreateRezervacijaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRezervacijaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

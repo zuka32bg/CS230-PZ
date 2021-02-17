@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRezervacijaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRezervacijaLabel_idRezervacije}"/>
+                    <h:outputText value="#{rezervacijaController.selected.idRezervacije}" title="#{bundle.ViewRezervacijaTitle_idRezervacije}"/>
+                    <h:outputText value="#{bundle.ViewRezervacijaLabel_datumPocetka}"/>
+                    <h:outputText value="#{rezervacijaController.selected.datumPocetka}" title="#{bundle.ViewRezervacijaTitle_datumPocetka}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRezervacijaLabel_datunKraja}"/>
+                    <h:outputText value="#{rezervacijaController.selected.datunKraja}" title="#{bundle.ViewRezervacijaTitle_datunKraja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRezervacijaLabel_idKlijenta}"/>
+                    <h:outputText value="#{rezervacijaController.selected.idKlijenta}" title="#{bundle.ViewRezervacijaTitle_idKlijenta}"/>
+                    <h:outputText value="#{bundle.ViewRezervacijaLabel_idVozila}"/>
+                    <h:outputText value="#{rezervacijaController.selected.idVozila}" title="#{bundle.ViewRezervacijaTitle_idVozila}"/>
+                    <h:outputText value="#{bundle.ViewRezervacijaLabel_idIznajmljivanja}"/>
+                    <h:outputText value="#{rezervacijaController.selected.idIznajmljivanja}" title="#{bundle.ViewRezervacijaTitle_idIznajmljivanja}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rezervacijaController.destroyAndView}" value="#{bundle.ViewRezervacijaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRezervacijaEditLink}"/>
+                <br />
+                <h:commandLink action="#{rezervacijaController.prepareCreate}" value="#{bundle.ViewRezervacijaCreateLink}" />
+                <br />
+                <h:commandLink action="#{rezervacijaController.prepareList}" value="#{bundle.ViewRezervacijaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRezervacijaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

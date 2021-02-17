@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateFirmaosiguranjaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateFirmaosiguranjaLabel_idFirme}" for="idFirme" />
+                    <h:inputText id="idFirme" value="#{firmaosiguranjaController.selected.idFirme}" title="#{bundle.CreateFirmaosiguranjaTitle_idFirme}" required="true" requiredMessage="#{bundle.CreateFirmaosiguranjaRequiredMessage_idFirme}"/>
+                    <h:outputLabel value="#{bundle.CreateFirmaosiguranjaLabel_naziv}" for="naziv" />
+                    <h:inputTextarea rows="4" cols="30" id="naziv" value="#{firmaosiguranjaController.selected.naziv}" title="#{bundle.CreateFirmaosiguranjaTitle_naziv}" required="true" requiredMessage="#{bundle.CreateFirmaosiguranjaRequiredMessage_naziv}"/>
+                    <h:outputLabel value="#{bundle.CreateFirmaosiguranjaLabel_adresaFirme}" for="adresaFirme" />
+                    <h:inputTextarea rows="4" cols="30" id="adresaFirme" value="#{firmaosiguranjaController.selected.adresaFirme}" title="#{bundle.CreateFirmaosiguranjaTitle_adresaFirme}" required="true" requiredMessage="#{bundle.CreateFirmaosiguranjaRequiredMessage_adresaFirme}"/>
+                    <h:outputLabel value="#{bundle.CreateFirmaosiguranjaLabel_telefonFirme}" for="telefonFirme" />
+                    <h:inputTextarea rows="4" cols="30" id="telefonFirme" value="#{firmaosiguranjaController.selected.telefonFirme}" title="#{bundle.CreateFirmaosiguranjaTitle_telefonFirme}" required="true" requiredMessage="#{bundle.CreateFirmaosiguranjaRequiredMessage_telefonFirme}"/>
+                    <h:outputLabel value="#{bundle.CreateFirmaosiguranjaLabel_faksFirme}" for="faksFirme" />
+                    <h:inputTextarea rows="4" cols="30" id="faksFirme" value="#{firmaosiguranjaController.selected.faksFirme}" title="#{bundle.CreateFirmaosiguranjaTitle_faksFirme}" required="true" requiredMessage="#{bundle.CreateFirmaosiguranjaRequiredMessage_faksFirme}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{firmaosiguranjaController.create}" value="#{bundle.CreateFirmaosiguranjaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{firmaosiguranjaController.prepareList}" value="#{bundle.CreateFirmaosiguranjaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateFirmaosiguranjaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditVoziloTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVoziloLabel_idVozila}" for="idVozila" />
+                    <h:inputText id="idVozila" value="#{voziloController.selected.idVozila}" title="#{bundle.EditVoziloTitle_idVozila}" required="true" requiredMessage="#{bundle.EditVoziloRequiredMessage_idVozila}"/>
+                    <h:outputLabel value="#{bundle.EditVoziloLabel_datumVracanja}" for="datumVracanja" />
+                    <h:inputText id="datumVracanja" value="#{voziloController.selected.datumVracanja}" title="#{bundle.EditVoziloTitle_datumVracanja}" required="true" requiredMessage="#{bundle.EditVoziloRequiredMessage_datumVracanja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVoziloLabel_kupovnaCena}" for="kupovnaCena" />
+                    <h:inputText id="kupovnaCena" value="#{voziloController.selected.kupovnaCena}" title="#{bundle.EditVoziloTitle_kupovnaCena}" required="true" requiredMessage="#{bundle.EditVoziloRequiredMessage_kupovnaCena}"/>
+                    <h:outputLabel value="#{bundle.EditVoziloLabel_kilometraza}" for="kilometraza" />
+                    <h:inputText id="kilometraza" value="#{voziloController.selected.kilometraza}" title="#{bundle.EditVoziloTitle_kilometraza}" required="true" requiredMessage="#{bundle.EditVoziloRequiredMessage_kilometraza}"/>
+                    <h:outputLabel value="#{bundle.EditVoziloLabel_popravka}" for="popravka" />
+                    <h:inputText id="popravka" value="#{voziloController.selected.popravka}" title="#{bundle.EditVoziloTitle_popravka}" required="true" requiredMessage="#{bundle.EditVoziloRequiredMessage_popravka}"/>
+                    <h:outputLabel value="#{bundle.EditVoziloLabel_datumPopravke}" for="datumPopravke" />
+                    <h:inputText id="datumPopravke" value="#{voziloController.selected.datumPopravke}" title="#{bundle.EditVoziloTitle_datumPopravke}" required="true" requiredMessage="#{bundle.EditVoziloRequiredMessage_datumPopravke}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{voziloController.update}" value="#{bundle.EditVoziloSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditVoziloViewLink}"/>
+                <br />
+                <h:commandLink action="#{voziloController.prepareList}" value="#{bundle.EditVoziloShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditVoziloIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

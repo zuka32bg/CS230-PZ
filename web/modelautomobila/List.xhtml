@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListModelautomobilaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListModelautomobilaEmpty}" rendered="#{modelautomobilaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{modelautomobilaController.items.rowCount > 0}">
+                    <h:outputText value="#{modelautomobilaController.pagination.pageFirstItem + 1}..#{modelautomobilaController.pagination.pageLastItem + 1}/#{modelautomobilaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{modelautomobilaController.previous}" value="#{bundle.Previous} #{modelautomobilaController.pagination.pageSize}" rendered="#{modelautomobilaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{modelautomobilaController.next}" value="#{bundle.Next} #{modelautomobilaController.pagination.pageSize}" rendered="#{modelautomobilaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{modelautomobilaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModelautomobilaTitle_idModela}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idModela}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModelautomobilaTitle_tipAuta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tipAuta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModelautomobilaTitle_snaga}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.snaga}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListModelautomobilaTitle_idMarke}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMarke}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{modelautomobilaController.prepareView}" value="#{bundle.ListModelautomobilaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{modelautomobilaController.prepareEdit}" value="#{bundle.ListModelautomobilaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{modelautomobilaController.destroy}" value="#{bundle.ListModelautomobilaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{modelautomobilaController.prepareCreate}" value="#{bundle.ListModelautomobilaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListModelautomobilaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

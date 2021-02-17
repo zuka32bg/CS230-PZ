@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOsiguranjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOsiguranjeLabel_idOsiguranja}" for="idOsiguranja" />
+                    <h:inputText id="idOsiguranja" value="#{osiguranjeController.selected.idOsiguranja}" title="#{bundle.EditOsiguranjeTitle_idOsiguranja}" required="true" requiredMessage="#{bundle.EditOsiguranjeRequiredMessage_idOsiguranja}"/>
+                    <h:outputLabel value="#{bundle.EditOsiguranjeLabel_tipOsiguranja}" for="tipOsiguranja" />
+                    <h:inputTextarea rows="4" cols="30" id="tipOsiguranja" value="#{osiguranjeController.selected.tipOsiguranja}" title="#{bundle.EditOsiguranjeTitle_tipOsiguranja}" required="true" requiredMessage="#{bundle.EditOsiguranjeRequiredMessage_tipOsiguranja}"/>
+                    <h:outputLabel value="#{bundle.EditOsiguranjeLabel_cenaOsiguranja}" for="cenaOsiguranja" />
+                    <h:inputText id="cenaOsiguranja" value="#{osiguranjeController.selected.cenaOsiguranja}" title="#{bundle.EditOsiguranjeTitle_cenaOsiguranja}" required="true" requiredMessage="#{bundle.EditOsiguranjeRequiredMessage_cenaOsiguranja}"/>
+                    <h:outputLabel value="#{bundle.EditOsiguranjeLabel_idFirme}" for="idFirme" />
+                    <h:selectOneMenu id="idFirme" value="#{osiguranjeController.selected.idFirme}" title="#{bundle.EditOsiguranjeTitle_idFirme}" required="true" requiredMessage="#{bundle.EditOsiguranjeRequiredMessage_idFirme}">
+                        <f:selectItems value="#{firmaosiguranjaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{osiguranjeController.update}" value="#{bundle.EditOsiguranjeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditOsiguranjeViewLink}"/>
+                <br />
+                <h:commandLink action="#{osiguranjeController.prepareList}" value="#{bundle.EditOsiguranjeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditOsiguranjeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

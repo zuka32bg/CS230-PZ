@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditObelezjeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditObelezjeLabel_idObelezja}" for="idObelezja" />
+                    <h:inputText id="idObelezja" value="#{obelezjeController.selected.idObelezja}" title="#{bundle.EditObelezjeTitle_idObelezja}" required="true" requiredMessage="#{bundle.EditObelezjeRequiredMessage_idObelezja}"/>
+                    <h:outputLabel value="#{bundle.EditObelezjeLabel_idVozila}" for="idVozila" />
+                    <h:selectOneMenu id="idVozila" value="#{obelezjeController.selected.idVozila}" title="#{bundle.EditObelezjeTitle_idVozila}" required="true" requiredMessage="#{bundle.EditObelezjeRequiredMessage_idVozila}">
+                        <f:selectItems value="#{voziloController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditObelezjeLabel_idModela}" for="idModela" />
+                    <h:selectOneMenu id="idModela" value="#{obelezjeController.selected.idModela}" title="#{bundle.EditObelezjeTitle_idModela}" required="true" requiredMessage="#{bundle.EditObelezjeRequiredMessage_idModela}">
+                        <f:selectItems value="#{modelautomobilaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{obelezjeController.update}" value="#{bundle.EditObelezjeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditObelezjeViewLink}"/>
+                <br />
+                <h:commandLink action="#{obelezjeController.prepareList}" value="#{bundle.EditObelezjeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditObelezjeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

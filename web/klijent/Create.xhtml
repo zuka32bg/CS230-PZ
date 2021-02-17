@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateKlijentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_idKlijenta}" for="idKlijenta" />
+                    <h:inputText id="idKlijenta" value="#{klijentController.selected.idKlijenta}" title="#{bundle.CreateKlijentTitle_idKlijenta}" required="true" requiredMessage="#{bundle.CreateKlijentRequiredMessage_idKlijenta}"/>
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_imeKlijenta}" for="imeKlijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="imeKlijenta" value="#{klijentController.selected.imeKlijenta}" title="#{bundle.CreateKlijentTitle_imeKlijenta}" required="true" requiredMessage="#{bundle.CreateKlijentRequiredMessage_imeKlijenta}"/>
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_adresaKlijenta}" for="adresaKlijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="adresaKlijenta" value="#{klijentController.selected.adresaKlijenta}" title="#{bundle.CreateKlijentTitle_adresaKlijenta}" required="true" requiredMessage="#{bundle.CreateKlijentRequiredMessage_adresaKlijenta}"/>
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_telefonKlijenta}" for="telefonKlijenta" />
+                    <h:inputTextarea rows="4" cols="30" id="telefonKlijenta" value="#{klijentController.selected.telefonKlijenta}" title="#{bundle.CreateKlijentTitle_telefonKlijenta}" required="true" requiredMessage="#{bundle.CreateKlijentRequiredMessage_telefonKlijenta}"/>
+                    <h:outputLabel value="#{bundle.CreateKlijentLabel_starost}" for="starost" />
+                    <h:inputTextarea rows="4" cols="30" id="starost" value="#{klijentController.selected.starost}" title="#{bundle.CreateKlijentTitle_starost}" required="true" requiredMessage="#{bundle.CreateKlijentRequiredMessage_starost}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{klijentController.create}" value="#{bundle.CreateKlijentSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{klijentController.prepareList}" value="#{bundle.CreateKlijentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateKlijentIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
